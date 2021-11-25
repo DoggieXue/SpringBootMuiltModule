@@ -11,6 +11,8 @@
     <modules>
         <module>about-encrypt</module>
         <module>simplespringboot</module>
+        <module>java_nio_lecture</module>
+        <module>democommon</module>
     </modules>
 
     <!-- 依赖版本集中管理-->
