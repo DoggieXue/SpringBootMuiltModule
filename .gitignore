@@ -1,4 +1,14 @@
 /SpringBootMuiltModule.iml
 /.idea/
 /about-encrypt/about-encrypt.iml
+/democommon/democommon.iml
+/java_nio_lecture/java_nio_lecture.iml
 /simplespringboot/simplespringboot.iml
+
+/simplespringboot/target
+/about-encrypt/target
+/democommon/target
+/java_nio_lecture/target
+
+
+
