@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.text.DecimalFormat;
 
 /**
  * @ClassName IOUtil
@@ -54,5 +55,28 @@ public class IOUtil {
                 e.printStackTrace();
             }
         }
+    }
+    private static DecimalFormat fileSizeFormater = FormatUtil.decimalFormat(1);
+    /**
+     * 格式化文件大小
+     * @param length
+     * @return
+     */
+    public static String getFormatFileSize(long length) {
+        double size = ((double) length) / (1 << 30);
+        if (size > 1) {
+            return fileSizeFormater.format(size) + "GB";
+        }
+        size = ((double) length) / (1 << 20);
+        if (size >= 1)
+        {
+            return fileSizeFormater.format(size) + "MB";
+        }
+        size = ((double) length) / (1 << 10);
+        if (size >= 1)
+        {
+            return fileSizeFormater.format(size) + "KB";
+        }
+        return length + "B";
     }
 }

@@ -1,4 +1,4 @@
-package org.cloudxue.ioDemo.fileDemo;
+package org.cloudxue.ioDemo.socketDemo;
 
 import lombok.extern.slf4j.Slf4j;
 import org.cloudxue.NioDemoConfig;
@@ -15,7 +15,7 @@ import java.nio.charset.Charset;
 
 /**
  * @ClassName NioSendClint
- * @Description 使用SocketChannel发送文件
+ * @Description 使用SocketChannel发送文件客户端
  * 客户端使用SocketChannel套接字通道，
  * 1、把文件信息发送到服务器：文件名称长度(Int)、文件名称、文件长度(Long)
  * 2、把文件内容发送到服务器：从FileChannel读取，写入Buffer缓冲区，再从Buffer缓冲区写入SocketChannel通道
