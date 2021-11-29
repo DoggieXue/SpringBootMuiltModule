@@ -17,7 +17,7 @@ import java.util.Map;
 
 /**
  * @ClassName NioReceiveServer
- * @Description 使用SocketChannel发送文件服务端
+ * @Description 使用SocketChannel在服务器端接收文件
  * @Author xuexiao
  * @Date 2021/11/26 上午10:21
  * @Version 1.0

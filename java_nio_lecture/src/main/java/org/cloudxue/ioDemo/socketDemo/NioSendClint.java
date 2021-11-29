@@ -127,4 +127,9 @@ public class NioSendClint {
         log.info("Client 文件长度发送完成：", file.length());
         return buffer;
     }
+
+    public static void main(String[] args) {
+        NioSendClint clint = new NioSendClint();
+        clint.sendFile();
+    }
 }
