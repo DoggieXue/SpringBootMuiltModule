@@ -25,7 +25,7 @@ public class FileChannelDemo {
         FileChannel outputChannel = fileOutputStream.getChannel();
 
         ByteBuffer buffer = ByteBuffer.allocate(1024);
-        ByteBuffer bytebuffer = ByteBuffer.allocateDirect(1024);
+//        ByteBuffer bytebuffer = ByteBuffer.allocateDirect(1024);
         while (true) {
             //若该行代码注释掉会发生什么？
             buffer.clear();
