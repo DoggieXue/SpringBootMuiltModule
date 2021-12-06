@@ -3,6 +3,7 @@
 /about-encrypt/about-encrypt.iml
 /democommon/democommon.iml
 /java_nio_lecture/java_nio_lecture.iml
+/netty_lecture/netty_lecture.iml
 /simplespringboot/simplespringboot.iml
 /design_patterns/design_patterns.iml.iml
 
@@ -10,6 +11,7 @@
 /about-encrypt/target
 /democommon/target
 /java_nio_lecture/target
+/netty_lecture/target
 /design_patterns/target
 
 

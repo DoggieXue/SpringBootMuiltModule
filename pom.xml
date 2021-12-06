@@ -14,6 +14,7 @@
         <module>java_nio_lecture</module>
         <module>democommon</module>
         <module>design_patterns</module>
+        <module>netty_lecture</module>
     </modules>
 
     <!-- 依赖版本集中管理-->
