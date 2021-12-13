@@ -60,4 +60,8 @@ public class NettyDiscardServer {
             bossLoopGroup.shutdownGracefully();
         }
     }
+
+    public static void main(String[] args) {
+        new NettyDiscardServer(8899).runServer();
+    }
 }
