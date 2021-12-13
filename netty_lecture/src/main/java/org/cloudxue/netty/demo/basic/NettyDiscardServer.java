@@ -1,4 +1,4 @@
-package org.cloudxue.netty.demo;
+package org.cloudxue.netty.demo.basic;
 
 /**
  * @ClassName NettyDiscardServer
