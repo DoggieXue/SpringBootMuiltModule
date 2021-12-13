@@ -9,10 +9,10 @@ import org.cloudxue.common.util.ConfigProperties;
  * @Date 2021/12/13 上午10:02
  * @Version 1.0
  **/
-public class NettyDenoConfig extends ConfigProperties {
-    static ConfigProperties singleton = new NettyDenoConfig("/system.properties");
+public class NettyDemoConfig extends ConfigProperties {
+    static ConfigProperties singleton = new NettyDemoConfig("/system.properties");
 
-    public NettyDenoConfig (String fileName) {
+    public NettyDemoConfig(String fileName) {
         super(fileName);
         super.loadFromFile();
     }
