@@ -1,12 +1,60 @@
-package org.cloudxue.po;
+package org.cloudxue.petstore.goods;
 
-/**
- * @ClassName IGoods
- * @Description 请描述类的业务用途
- * @Author xuexiao
- * @Date 2022/3/30 下午2:13
- * @Version 1.0
- **/
+import org.cloudxue.common.util.RandomUtil;
+
 public interface IGoods extends Comparable<IGoods>{
 
+    enum Type {
+        PET,
+        FOOD,
+        CLOTHES;
+
+        public static Type randType() {
+            int length = values().length;
+            int typeNo = RandomUtil.randInMod(length) - 1;
+            return values()[typeNo];
+        }
+    }
+
+    /**
+     * 获取商品ID
+     * @return
+     */
+    int getID();
+
+    /**
+     * 设置商品ID
+     * @param id
+     */
+    void setID(int id);
+
+    /**
+     * 获取商品价格
+     * @return
+     */
+    float getPrice();
+
+    /**
+     * 设置商品价格
+     * @param price
+     */
+    void setPrice(float price);
+
+    /**
+     * 获取商品名称
+     * @return
+     */
+    String getName();
+
+    /**
+     * 取的商品数量
+     * @return
+     */
+    int getAmount();
+
+    /**
+     * 取的商品类型
+     * @return
+     */
+    Type getType();
 }
