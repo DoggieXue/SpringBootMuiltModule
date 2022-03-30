@@ -15,6 +15,7 @@
         <module>democommon</module>
         <module>design_patterns</module>
         <module>netty_lecture</module>
+        <module>multi_thread_lecture</module>
     </modules>
 
     <!-- 依赖版本集中管理-->
