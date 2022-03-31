@@ -1,5 +1,7 @@
 package org.cloudxue.multi.thread.producerandconsumer.store;
 
+import org.cloudxue.common.util.Print;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -30,11 +32,12 @@ public class NotSafeDataBuffer<T> {
      */
     public void add(T element) throws Exception {
         if (dataList.size() > MAX_AMOUNT) {
-            System.out.println("队列已经满了！");
+            Print.cfo("队列已经满了！");
             return;
         }
 
         dataList.add(element);
+        Print.tcfo(element + "");
         amount.incrementAndGet();
 
         /**
@@ -53,11 +56,12 @@ public class NotSafeDataBuffer<T> {
      */
     public T fetch() throws Exception {
         if (amount.get() <= 0) {
-            System.out.println("队列已经空了！");
+            Print.cfo("队列已经空了！");
             return null;
         }
 
         T element = dataList.remove(0);
+        Print.tcfo(element + "");
         amount.decrementAndGet();
 
         /**

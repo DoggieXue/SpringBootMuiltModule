@@ -1,5 +1,8 @@
 package org.cloudxue.multi.thread.producerandconsumer.store;
 
+import org.cloudxue.common.util.Print;
+import org.cloudxue.common.util.ThreadUtil;
+
 import java.util.concurrent.Callable;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -51,10 +54,12 @@ public class Consumer implements Runnable{
             try {
                 Object out = action.call();
                 if (null != out) {
-                    System.out.println("第" + TURN.get() + "轮消费： " + out);
+//                    System.out.println("第" + TURN.get() + "轮消费： " + out);
+                    Print.tcfo("第" + TURN.get() + "轮消费： " + out);
                 }
                 //每一轮消费之后，休眠一段时间
-                Thread.sleep(gap);
+//                Thread.sleep(gap);
+                ThreadUtil.sleepMilliSeconds(gap);
             } catch (Exception e) {
                 e.printStackTrace();
             }
