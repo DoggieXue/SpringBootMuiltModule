@@ -17,5 +17,11 @@
             <artifactId>demoCommon</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <!--Java Object Layout -->
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>0.11</version>
+        </dependency>
     </dependencies>
 </project>

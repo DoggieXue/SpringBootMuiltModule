@@ -3,6 +3,8 @@ package org.cloudxue.multi.thread.cas;
 import org.cloudxue.common.util.JvmUtil;
 import org.cloudxue.common.util.Print;
 import org.cloudxue.common.util.ThreadUtil;
+import org.junit.Test;
+import org.openjdk.jol.info.ClassLayout;
 import sun.misc.Unsafe;
 
 import java.util.concurrent.CountDownLatch;
@@ -97,5 +99,13 @@ public class OptimisticLockingPlus {
         latch.await();
         Print.tco("10条线程并发运行，累加结果：" + cas.value);
         Print.tco("10条线程并发运行，自旋次数：" + cas.failure.get());
+    }
+
+    @Test
+    public void printObjectStruct() {
+        OptimisticLockingPlus object = new OptimisticLockingPlus();
+        object.value = 100;
+        String printable = ClassLayout.parseInstance(object).toPrintable();
+        Print.fo("object struct = " + printable);
     }
 }
