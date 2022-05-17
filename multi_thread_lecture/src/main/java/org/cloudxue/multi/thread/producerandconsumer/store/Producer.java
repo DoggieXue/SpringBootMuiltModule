@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  **/
 public class Producer implements Runnable{
     /**
-     * 生产的时间间隔
+     * 默认的生产的时间间隔
      */
     private static final int PRODUCE_GAP = 200;
 

@@ -9,7 +9,7 @@ import java.util.concurrent.*;
 
 /**
  * @ClassName ArrayBlockingQueuePetStore
- * @Description 基于阻塞队列ArrayBlockingQuere实现生产者-消费者模式
+ * @Description 基于阻塞队列ArrayBlockingQueue实现生产者-消费者模式
  * @Author xuexiao
  * @Date 2022/5/6 下午3:27
  * @Version 1.0

@@ -54,11 +54,8 @@ public class Consumer implements Runnable{
             try {
                 Object out = action.call();
                 if (null != out) {
-//                    System.out.println("第" + TURN.get() + "轮消费： " + out);
                     Print.tcfo("第" + TURN.get() + "轮消费： " + out);
                 }
-                //每一轮消费之后，休眠一段时间
-//                Thread.sleep(gap);
                 ThreadUtil.sleepMilliSeconds(gap);
             } catch (Exception e) {
                 e.printStackTrace();

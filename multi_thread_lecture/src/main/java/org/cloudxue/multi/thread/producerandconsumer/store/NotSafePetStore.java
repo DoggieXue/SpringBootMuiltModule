@@ -40,6 +40,7 @@ public class NotSafePetStore {
     };
 
     public static void main(String[] args) {
+        System.setErr(System.out);
         final int THREAD_TOTAL = 20;
 
         ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_TOTAL);
