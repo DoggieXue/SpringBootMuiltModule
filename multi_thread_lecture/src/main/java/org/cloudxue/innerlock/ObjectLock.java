@@ -6,7 +6,7 @@ import org.openjdk.jol.info.ClassLayout;
 
 /**
  * @ClassName ObjectLock
- * @Description 请描述类的业务用途
+ * @Description 对象锁，集成JOL打印对象布局
  * @Author xuexiao
  * @Date 2022/5/18 3:39 下午
  * @Version 1.0
@@ -88,12 +88,20 @@ public class ObjectLock {
 
     public void printSelf() {
         //输出十六进制、小端模式的hashCode
-        Print.fo("lock hexHash = " + hexHash());
+        Print.fo("【小端模式】lock hexHash = " + hexHash());
         //输出二进制、小端模式的hashCode
-        Print.fo("lock binaryHash = " + binaryHash());
+        Print.fo("【小端模式】lock binaryHash = " + binaryHash());
         //通过JOL工具获取this的对象布局
         String printable = ClassLayout.parseInstance(this).toPrintable();
         //输出对象布局
+        Print.fo("lock = " + printable);
+    }
+
+    /**
+     * 打印对象结构布局信息
+     */
+    public void printObjectStruct() {
+        String printable = ClassLayout.parseInstance(this).toPrintable();
         Print.fo("lock = " + printable);
     }
 }
