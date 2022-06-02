@@ -43,6 +43,29 @@ public class AtomicTest {
         System.out.println(i.get());
     }
 
+    @Test
+    public void testAtomicInteger1() throws InterruptedException{
+
+        AtomicInteger amount = new AtomicInteger(0);
+
+        CountDownLatch latch = new CountDownLatch(10);
+
+        //创建10个线程
+        for(int i = 0; i < 10; i++) {
+
+            //每个线程执行1000次自增
+            ThreadUtil.getMixedTargetThreadPool().submit(() -> {
+                for(int j = 0; j < 1000; j++) {
+                    amount.getAndIncrement();
+                }
+                //每个线程执行完一次后，倒数闩减少1次
+                latch.countDown();
+            });
+        }
+        //等待10条线程全部执行完毕
+        latch.await();
+        Print.tco("10条线程分别自增1000次结果： " + amount.get());
+    }
     /**
      * 数组原子类练习：以AtomicIntegerArray为例
      */
@@ -196,7 +219,6 @@ public class AtomicTest {
     private boolean getMark(AtomicMarkableReference<Integer> markableRef) {
         boolean[] markHolder = {false};
         int value = markableRef.get(markHolder);
-        LongAdder longAdder = new LongAdder();
         return markHolder[0];
     }
 }
