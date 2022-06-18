@@ -1,4 +1,4 @@
-package org.cloudxue.demo.lock;
+package org.cloudxue.demo.lock.juclock;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;

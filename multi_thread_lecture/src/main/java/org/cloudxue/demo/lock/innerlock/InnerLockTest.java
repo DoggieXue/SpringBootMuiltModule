@@ -1,4 +1,4 @@
-package org.cloudxue.innerlock;
+package org.cloudxue.demo.lock.innerlock;
 
 import org.cloudxue.common.util.Print;
 import org.junit.Test;
