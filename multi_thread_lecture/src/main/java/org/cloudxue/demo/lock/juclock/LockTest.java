@@ -2,6 +2,7 @@ package org.cloudxue.demo.lock.juclock;
 
 import org.cloudxue.common.util.Print;
 import org.cloudxue.common.util.ThreadUtil;
+import org.cloudxue.demo.lock.juclock.custom.CLHLock;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -18,6 +19,39 @@ import java.util.concurrent.locks.ReentrantLock;
  * @Version 1.0
  **/
 public class LockTest {
+
+    @Test
+    public void testCLHLockCapability() {
+        final int THREADS = 10;
+        final int TURNS = 100000;
+
+        ExecutorService pool = Executors.newFixedThreadPool(THREADS);
+
+        Lock lock = new CLHLock("CLH锁");
+        CountDownLatch latch = new CountDownLatch(THREADS);
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < THREADS; i++) {
+            pool.submit(() -> {
+                for (int j = 0; j < TURNS; j++) {
+                    IncrementData.lockAndFastIncrease(lock);
+                }
+                Print.tcfo("本次累加执行完毕");
+                latch.countDown();
+            });
+        }
+
+        //等待所有线程执行完毕
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        float time = (System.currentTimeMillis() - startTime) / 1000F;
+        Print.tcfo("运行时间： " + time);
+        Print.tcfo("累加结果： " + IncrementData.sum);
+    }
 
     /**
      * ReentrantLock进行同步累加
