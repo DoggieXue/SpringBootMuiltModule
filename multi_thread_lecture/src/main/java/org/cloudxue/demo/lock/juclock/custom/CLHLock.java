@@ -79,12 +79,12 @@ public class CLHLock implements Lock {
     public void unlock() {
         //获取当前节点
         Node currNode = currNodeLocal.get();
-        //当前节点让出锁，方便下一次抢锁
-        currNode.setLocked(false);
         //当前节点的前驱置空，方便垃圾回收（前驱节点）
         currNode.setPreNode(null);
         //清空本地线程
         currNodeLocal.set(null);
+        //当前节点让出锁，方便下一次抢锁
+        currNode.setLocked(false);
     }
 
     @Override
