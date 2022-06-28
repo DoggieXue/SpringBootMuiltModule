@@ -7,13 +7,13 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * @ClassName ReentrantCommunicationTest
+ * @ClassName ReentrantCommunicationDemo
  * @Description 基于显示锁的等待-通知Demo
  * @Author xuexiao
  * @Date 2022/6/18 8:50 上午
  * @Version 1.0
  **/
-public class ReentrantCommunicationTest {
+public class ReentrantCommunicationDemo {
     //创建显示锁
     static Lock lock = new ReentrantLock();
     //获取显示锁绑定的Condition对象
