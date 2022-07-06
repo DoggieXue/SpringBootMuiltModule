@@ -121,4 +121,31 @@ public class LockTest {
         Print.tcfo("运行时长： " + time);
         Print.tcfo("累加结果： " + IncrementData.sum);
     }
+
+    /**
+     * 可中断抢锁测试案例
+     */
+    @Test
+    public void testInterruptLock() throws InterruptedException{
+        //可重入锁，默认非公平锁
+        Lock lock = new ReentrantLock();
+
+        Runnable runnable = () -> {
+            IncrementData.lockInterruptiblyAndIncrease(lock);
+        };
+
+        Thread t1 = new Thread(runnable, "线程1");
+        Thread t2 = new Thread(runnable, "线程2");
+
+        t1.start();
+        t2.start();
+
+        ThreadUtil.sleepMilliSeconds(1000);
+        Print.synTco("等待100毫秒，中断两个线程");
+
+        t1.interrupt();
+        t2.interrupt();
+
+        Thread.sleep(Integer.MAX_VALUE);
+    }
 }
