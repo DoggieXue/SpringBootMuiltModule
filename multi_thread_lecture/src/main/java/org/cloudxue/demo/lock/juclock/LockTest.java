@@ -3,6 +3,7 @@ package org.cloudxue.demo.lock.juclock;
 import org.cloudxue.common.util.Print;
 import org.cloudxue.common.util.ThreadUtil;
 import org.cloudxue.demo.lock.juclock.custom.CLHLock;
+import org.cloudxue.demo.lock.juclock.custom.SimpleMockLock;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -86,17 +87,20 @@ public class LockTest {
         Print.tcfo("累加结果：" + IncrementData.sum);
     }
 
-
-
+    /**
+     * 自定义独占锁-SimpleMockLock测试用例
+     * 10个线程各自累加1000次求和
+     * @throws InterruptedException
+     */
     @Test
     public void testMockLock() throws InterruptedException {
         //每条线程的执行轮数
         final int TURNS = 1000;
         //线程数
         final int THREADS = 10;
-
+        //线程池
         ExecutorService pool = Executors.newFixedThreadPool(THREADS);
-
+        //自定义独占锁
         Lock lock = new SimpleMockLock();
         //倒数闩
         CountDownLatch latch = new CountDownLatch(THREADS);
