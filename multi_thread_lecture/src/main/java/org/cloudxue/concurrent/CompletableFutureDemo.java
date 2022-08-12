@@ -21,6 +21,7 @@ import java.util.function.Function;
 public class CompletableFutureDemo {
 
     /**
+     * Basic 1：创建异步任务
      * runAsync 创建一个无输入、无返回值的异步子任务
      * @throws Exception
      */
@@ -36,7 +37,8 @@ public class CompletableFutureDemo {
     }
 
     /**
-     * 创建一个无输入、又返回的异步子任务
+     * Basic 1：创建异步任务
+     * supplyAsync: 创建一个无输入、有返回的异步子任务
      * @throws Exception
      */
     @Test
@@ -54,6 +56,7 @@ public class CompletableFutureDemo {
     }
 
     /**
+     * Basic 2：设置异步任务回调钩子
      * 设置异步任务回调钩子
      * @throws Exception
      */
@@ -86,6 +89,7 @@ public class CompletableFutureDemo {
     }
 
     /**
+     * Basic 3: 统一处理结果和异常
      * 使用handle统一处理异常和结果
      */
     @Test
@@ -113,6 +117,7 @@ public class CompletableFutureDemo {
     }
 
     /**
+     * Basic 4：线程池的使用
      * 指定线程池执行异步任务
      */
     @Test
