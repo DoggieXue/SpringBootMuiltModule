@@ -11,7 +11,7 @@ import java.nio.channels.SocketChannel;
 
 /**
  * @ClassName EchoHandler
- * @Description 请描述类的业务用途
+ * @Description 负责socket连接的数据输入、业务处理、数据输出
  * @Author xuexiao
  * @Date 2021/11/28 下午9:18
  * @Version 1.0
@@ -19,18 +19,18 @@ import java.nio.channels.SocketChannel;
 @Slf4j
 public class EchoHandler implements Runnable{
 
-    final SocketChannel channel;
-    final SelectionKey sk;
-    final ByteBuffer byteBuffer = ByteBuffer.allocate(NioDemoConfig.SEND_BUFFER_SIZE);
+    public final SocketChannel channel;
+    public final SelectionKey sk;
+    public final ByteBuffer byteBuffer = ByteBuffer.allocate(NioDemoConfig.SEND_BUFFER_SIZE);
     //处理器实例状态：发送和接收 一个连接对应一个处理器实例
-    static final int RECEIVING = 0, SENDING = 1;
-    int state = RECEIVING;
+    public static final int RECEIVING = 0, SENDING = 1;
+    public int state = RECEIVING;
     public EchoHandler(Selector selector, SocketChannel socketChannel) throws IOException {
         channel = socketChannel;
         channel.configureBlocking(false);
         //仅仅获得选择键，之后再设置感兴趣的IO事件
         sk = channel.register(selector, 0);
-        //将Echoandler自身作为选择键的附件H，一个连接对应一个处理器实例
+        //将EchoHandler自身作为选择键的附件，一个连接对应一个处理器实例
         sk.attach(this);
         //注册READ就绪事件
         sk.interestOps(SelectionKey.OP_READ);

@@ -51,7 +51,7 @@ public class NioReceiveServer {
     /**
      * 读写缓冲区
      */
-    private ByteBuffer buffer = ByteBuffer.allocate(NioDemoConfig.SEND_BUFFER_SIZE);
+    private ByteBuffer buffer = ByteBuffer.allocate(NioDemoConfig.SERVER_BUFFER_SIZE);
 
     /**
      * 使用Map保存每个客户端传输，当OP_READ通道可读时，根据channel找到对应的对象
