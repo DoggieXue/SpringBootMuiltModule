@@ -1,8 +1,9 @@
 package org.cloudxue.encrypt.utils.sm2;
 
-import cn.xjfme.encrypt.utils.Util;
-import cn.xjfme.encrypt.test.SecurityTestAll;
+
 import org.bouncycastle.math.ec.ECPoint;
+import org.cloudxue.encrypt.test.SecurityTestAll;
+import org.cloudxue.encrypt.utils.Util;
 
 import java.math.BigInteger;
 

@@ -93,4 +93,17 @@ public class JvmUtil {
         }
         return sb.toString();
     }
+
+    public static boolean isClassPresent(String className) {
+        try {
+            Class.forName(className);
+            return true;
+        } catch (IllegalAccessError err) {
+            throw new IllegalStateException("Readability mismatch in inheritance hierarchy of class [" +
+                    className + "]: " + err.getMessage(), err);
+        } catch (Throwable ex) {
+            // Typically ClassNotFoundException or NoClassDefFoundError...
+            return false;
+        }
+    }
 }

@@ -1,11 +1,11 @@
 package org.cloudxue.encrypt.utils.sm2;
 
 
-import cn.xjfme.encrypt.utils.Util;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import org.bouncycastle.crypto.params.ECPublicKeyParameters;
 import org.bouncycastle.math.ec.ECPoint;
+import org.cloudxue.encrypt.utils.Util;
 
 import java.io.IOException;
 import java.math.BigInteger;

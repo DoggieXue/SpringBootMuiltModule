@@ -4,7 +4,8 @@ package org.cloudxue.encrypt.utils.sm4;
  * Created by $(USER) on $(DATE)
  */
 
-import cn.xjfme.encrypt.utils.Util;
+
+import org.cloudxue.encrypt.utils.Util;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

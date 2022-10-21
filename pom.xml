@@ -16,6 +16,7 @@
         <module>design_patterns</module>
         <module>netty_lecture</module>
         <module>multi_thread_lecture</module>
+        <module>NettyHttpServer</module>
     </modules>
 
     <!-- 依赖版本集中管理-->
@@ -26,6 +27,14 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <springboot.version>2.3.4.RELEASE</springboot.version>
         <guava.version>17.0</guava.version>
+        <httpclient.version>4.5.1</httpclient.version>
+        <commons-io.version>2.6</commons-io.version>
+        <netty.version>4.1.60.Final</netty.version>
+        <springframework.version>4.3.13.RELEASE</springframework.version>
+        <lombok.version>1.16.22</lombok.version>
+        <gson.version>2.8.6</gson.version>
+        <junit.version>4.13</junit.version>
+        <lombok.version>1.16.10</lombok.version>
     </properties>
 
     <dependencies>
@@ -33,12 +42,18 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>${junit.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${springboot.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -46,6 +61,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${springboot.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>junit-jupiter-api</artifactId>
+                    <groupId>org.junit.jupiter</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

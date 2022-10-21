@@ -1,6 +1,5 @@
 package org.cloudxue.encrypt.utils.sm2;
 
-import cn.xjfme.encrypt.utils.Util;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.digests.SM3Digest;
 import org.bouncycastle.crypto.generators.ECKeyPairGenerator;
@@ -12,6 +11,7 @@ import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.math.ec.ECFieldElement;
 import org.bouncycastle.math.ec.ECFieldElement.Fp;
 import org.bouncycastle.math.ec.ECPoint;
+import org.cloudxue.encrypt.utils.Util;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;

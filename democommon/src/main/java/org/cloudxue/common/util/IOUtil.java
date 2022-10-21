@@ -1,9 +1,6 @@
 package org.cloudxue.common.util;
 
-import java.io.Closeable;
-import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.text.DecimalFormat;

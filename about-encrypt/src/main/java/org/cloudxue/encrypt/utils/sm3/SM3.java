@@ -1,8 +1,8 @@
 package org.cloudxue.encrypt.utils.sm3;
 
-import cn.xjfme.encrypt.utils.Util;
 import org.bouncycastle.crypto.digests.SM3Digest;
 import org.bouncycastle.util.encoders.Hex;
+import org.cloudxue.encrypt.utils.Util;
 
 /**
  * Created by $(USER) on $(DATE)

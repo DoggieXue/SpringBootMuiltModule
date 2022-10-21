@@ -4,8 +4,9 @@ package org.cloudxue.encrypt.utils.sm4;
  * Created by $(USER) on $(DATE)
  */
 
-import cn.xjfme.encrypt.utils.Util;
 import org.apache.commons.codec.binary.Base64;
+import org.cloudxue.encrypt.utils.Util;
+
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
