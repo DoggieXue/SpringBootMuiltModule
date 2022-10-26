@@ -31,9 +31,8 @@ public class ThreadUtil {
 
         CustomThreadFactory(String threadTag) {
             SecurityManager s = System.getSecurityManager();
-            group = (s != null) ? s.getThreadGroup() :
-                    Thread.currentThread().getThreadGroup();
-            this.threadTag = "apppool-" + poolNumber.getAndIncrement() + "-" + threadTag + "-";
+            group = (s != null) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();
+            this.threadTag = "app-pool-" + poolNumber.getAndIncrement() + "-" + threadTag + "-";
         }
 
         @Override
@@ -65,6 +64,9 @@ public class ThreadUtil {
      * 核心线程数
      */
     private static final int CORE_POOL_SIZE = 0;
+    /**
+     * 最大线程数
+     */
     private static final int MAXIMUM_POOL_SIZE = CPU_COUNT;
 
     //懒汉式单例创建线程池：用于CPU密集型任务
