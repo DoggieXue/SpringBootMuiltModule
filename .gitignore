@@ -9,6 +9,7 @@
 /design_patterns/design_patterns.iml
 /multi_thread_lecture/multi_thread_lecture.iml
 /design_patterns/design_patterns.iml
+/NettyHttpServer/NettyHttpServer.iml
 
 /simplespringboot/target
 /about-encrypt/target
@@ -17,3 +18,4 @@
 /netty_lecture/target
 /design_patterns/target
 /multi_thread_lecture/target
+/NettyHttpServer/target/
