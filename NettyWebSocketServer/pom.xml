@@ -9,30 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>NettyHttpServer</artifactId>
+    <artifactId>NettyWebSocketServer</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>org.cloudxue</groupId>
-            <artifactId>demoCommon</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <!--
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>${netty.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>${gson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-        </dependency>
-        -->
     </dependencies>
+
 </project>
