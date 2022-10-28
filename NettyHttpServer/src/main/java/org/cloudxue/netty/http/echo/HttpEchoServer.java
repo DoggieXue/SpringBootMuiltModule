@@ -32,7 +32,7 @@ public class HttpEchoServer {
             pipeline.addLast(new HttpRequestDecoder());
             //Http响应编码器
             pipeline.addLast(new HttpResponseEncoder());
-            pipeline.addLast(new HttpObjectAggregator(Integer.MAX_VALUE));
+            pipeline.addLast(new HttpObjectAggregator(65535));
             //自定义业务handler
             pipeline.addLast(new HttpEchoHandler());
         }
