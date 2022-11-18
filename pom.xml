@@ -9,15 +9,16 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>about-encrypt</module>
+        <module>encrypt_lecture</module>
         <module>simplespringboot</module>
         <module>java_nio_lecture</module>
-        <module>democommon</module>
+        <module>common-lib</module>
         <module>design_patterns</module>
         <module>netty_lecture</module>
         <module>multi_thread_lecture</module>
         <module>NettyHttpServer</module>
         <module>NettyWebSocketServer</module>
+        <module>ZooKeeper_lecture</module>
     </modules>
 
     <!-- 依赖版本集中管理-->

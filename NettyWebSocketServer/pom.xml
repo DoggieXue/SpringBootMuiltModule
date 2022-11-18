@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>org.cloudxue</groupId>
-            <artifactId>demoCommon</artifactId>
+            <artifactId>common-lib</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
