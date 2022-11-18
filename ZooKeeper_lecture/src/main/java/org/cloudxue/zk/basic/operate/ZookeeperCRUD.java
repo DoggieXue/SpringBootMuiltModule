@@ -1,4 +1,4 @@
-package org.cloudxue.zk;
+package org.cloudxue.zk.basic.operate;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
@@ -12,10 +12,10 @@ import org.junit.Test;
 import java.util.List;
 
 /**
- * @ClassName ZookeeperCRUD
+ * @ClassName ZKCRUD
  * @Description 请描述类的业务用途
  * @Author xuexiao
- * @Date 2022/11/14 11:18 上午
+ * @Date 2022/11/16 5:42 下午
  * @Version 1.0
  **/
 @Slf4j
@@ -121,7 +121,7 @@ public class ZookeeperCRUD {
                 @Override
                 public void processResult(int rc, String path, Object ctx, String name) {
                     System.out.println("------------rc = " + rc + "|  " +
-                                        "path = " + path + " | " +
+                            "path = " + path + " | " +
                             "ctx = " + ctx + " | " +
                             "name = " + name);
                 }
@@ -163,7 +163,5 @@ public class ZookeeperCRUD {
         } finally {
             CloseableUtils.closeQuietly(client);
         }
-
     }
-
 }
