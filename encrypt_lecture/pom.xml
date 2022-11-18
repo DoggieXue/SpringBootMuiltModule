@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>about-encrypt</artifactId>
+    <artifactId>encrypt_lecture</artifactId>
 
     <dependencies>
         <!--国密依赖包-->
