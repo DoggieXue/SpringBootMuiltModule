@@ -1,8 +1,11 @@
 package org.cloudxue.zk.application.distributed_lock;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.cloudxue.common.concurrent.ExecuteTask;
 import org.cloudxue.common.concurrent.FutureTaskScheduler;
+import org.cloudxue.common.zk.ZooKeeperClient;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -45,6 +48,37 @@ public class ZKLockTest {
                 }
             });
 
+        }
+        latch.await();
+    }
+
+    /**
+     * Curator客户端互斥锁测试案例
+     * @throws InterruptedException
+     */
+    @Test
+    public void testZkMutex() throws InterruptedException {
+        CountDownLatch latch = new CountDownLatch(TURNS);
+        CuratorFramework client = ZooKeeperClient.instance.getZkClient();
+        final InterProcessMutex zkLock = new InterProcessMutex(client, "/mutex");
+
+        for (int i = 0; i < TURNS; i++) {
+            FutureTaskScheduler.add(() -> {
+                try {
+                    zkLock.acquire();
+                    for (int j = 0; j < 20; j++) {
+                        count++;
+                    }
+
+                    Thread.sleep(1000);
+
+                    log.info("{}线程执行完累加后，count={}", Thread.currentThread().getName(), count);
+                    zkLock.release();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                latch.countDown();
+            });
         }
         latch.await();
     }
