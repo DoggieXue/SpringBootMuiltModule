@@ -2,7 +2,6 @@ package org.cloudxue.common.util;
 
 import org.cloudxue.common.anno.ConfigFileAnnotation;
 import org.springframework.util.StringUtils;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;

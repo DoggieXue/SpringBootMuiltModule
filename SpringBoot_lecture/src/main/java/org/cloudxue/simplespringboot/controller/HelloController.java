@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @ClassName MyController
+ * @ClassName HelloController
  * @Description 请描述类的业务用途
  * @Author xuexiao
  * @Date 2021/11/18 上午11:24
