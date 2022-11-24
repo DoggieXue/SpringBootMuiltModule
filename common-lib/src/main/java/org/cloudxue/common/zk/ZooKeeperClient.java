@@ -140,7 +140,7 @@ public class ZooKeeperClient {
         try {
             return zkClient.create()
                     .creatingParentsIfNeeded()
-                    .withMode(CreateMode.EPHEMERAL_SEQUENTIAL)
+                    .withMode(mode)
                     .forPath(zkPath);
         } catch (Exception e) {
             e.printStackTrace();
@@ -159,7 +159,7 @@ public class ZooKeeperClient {
         try {
             return zkClient.create()
                     .creatingParentsIfNeeded()
-                    .withMode(CreateMode.EPHEMERAL_SEQUENTIAL)
+                    .withMode(mode)
                     .forPath(zkPath, payload);
         } catch (Exception e) {
             e.printStackTrace();

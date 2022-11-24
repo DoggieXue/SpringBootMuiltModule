@@ -59,7 +59,7 @@ public class ZKWatcherDemo {
 
         boolean isExist = ZooKeeperClient.instance.isNodeExist(workPath);
         if (!isExist) {
-            ZooKeeperClient.instance.createNode(workPath, "");
+            ZooKeeperClient.instance.createNode(workPath, null);
         }
         try {
             //创建NodeCache
@@ -98,7 +98,7 @@ public class ZKWatcherDemo {
 
         boolean isExist = ZooKeeperClient.instance.isNodeExist(workPath);
         if (!isExist) {
-            ZooKeeperClient.instance.createNode(workPath, "");
+            ZooKeeperClient.instance.createNode(workPath, null);
         }
 
         PathChildrenCache cache = new PathChildrenCache(zkClient, workPath, true);
@@ -130,7 +130,7 @@ public class ZKWatcherDemo {
 
             //创建三个子节点
             for (int i = 0; i < 3; i++){
-                ZooKeeperClient.instance.createNode(subWorkPath, null);
+                ZooKeeperClient.instance.createNode(subWorkPath + i, null);
             }
             Thread.sleep(1000);
 
@@ -139,7 +139,71 @@ public class ZKWatcherDemo {
                 ZooKeeperClient.instance.deleteNode(subWorkPath + j);
             }
         } catch (Exception e) {
-            log.error("创建NodeCache监听失败， path={}", workPath);
+            log.error("创建PathChildCache监听失败， path={}", workPath);
+        }
+    }
+
+    /**
+     * TreeCache不仅可以监听子节点，也能监听节点本身
+     */
+    @Test
+    public void testTreeCache() {
+        boolean isExist = ZooKeeperClient.instance.isNodeExist(workPath);
+        if (!isExist) {
+            ZooKeeperClient.instance.createNode(workPath, null);
+        }
+
+        CuratorFramework client = ZooKeeperClient.instance.getZkClient();
+
+        try {
+            TreeCache treeCache = new TreeCache(client, workPath);
+            TreeCacheListener listener = new TreeCacheListener() {
+                @Override
+                public void childEvent(CuratorFramework client, TreeCacheEvent treeCacheEvent) throws Exception {
+                    ChildData data = treeCacheEvent.getData();
+                    if (data == null) {
+                        log.info("数据为空！");
+                        return;
+                    }
+                    switch (treeCacheEvent.getType()) {
+                        case NODE_ADDED:
+                            log.info("[TreeCache]节点增加，path={}, data={}", data.getPath(), new String(data.getData(), "UTF-8"));
+                            break;
+                        case NODE_UPDATED:
+                            log.info("[TreeCache]节点更新，path={}, data={}", data.getPath(), new String(data.getData(), "UTF-8"));
+                            break;
+                        case NODE_REMOVED:
+                            log.info("[TreeCache]节点删除，path={}, data={}", data.getPath(), new String(data.getData(), "UTF-8"));
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            };
+            //设置监听器
+            treeCache.getListenable().addListener(listener);
+            //启动监听
+            treeCache.start();
+            Thread.sleep(1000);
+
+            //创建3个子节点
+            for (int i = 0; i < 3; i++) {
+                ZooKeeperClient.instance.createNode(subWorkPath + i, null);
+            }
+            Thread.sleep(1000);
+
+            //删除3个子节点
+            for (int i = 0; i < 3; i++) {
+                ZooKeeperClient.instance.deleteNode(subWorkPath + i);
+            }
+            Thread.sleep(1000);
+
+            //删除当前节点
+            ZooKeeperClient.instance.deleteNode(workPath);
+            Thread.sleep(Integer.MAX_VALUE);
+
+        } catch (Exception e) {
+            log.error("创建TreeCache监听失败， path={}", workPath);
         }
     }
 }
