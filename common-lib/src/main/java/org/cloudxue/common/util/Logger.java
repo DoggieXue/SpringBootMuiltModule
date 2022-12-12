@@ -43,12 +43,10 @@ public class Logger {
     synchronized public static void tcfo(Object s) {
         String cft= "["+Thread.currentThread().getName()+"|"+ReflectionUtil.getNakeCallClassMethod()+"]";
         String content = null;
-        if (null != s)
-        {
+        if (null != s) {
             content = s.toString().trim();
         }
-        else
-        {
+        else {
             content = "";
         }
 
@@ -69,15 +67,11 @@ public class Logger {
      *
      * @param s 待输出的字符串形参
      */
-    public static void debug(Object s)
-    {
+    public static void debug(Object s) {
         String content = null;
-        if (null != s)
-        {
+        if (null != s) {
             content = s.toString().trim();
-        }
-        else
-        {
+        } else {
             content = "";
         }
 
@@ -91,22 +85,17 @@ public class Logger {
      *
      * @param s 待输出的字符串形参
      */
-    synchronized public static void info(Object s)
-    {
+    synchronized public static void info(Object s) {
         String content = null;
-        if (null != s)
-        {
+        if (null != s) {
             content = s.toString().trim();
-        }
-        else
-        {
+        } else {
             content = "";
         }
         String cft = "[" + Thread.currentThread().getName() + "|" + ReflectionUtil.getNakeCallClassMethod() + "]";
 
         String out = String.format("%20s |>  %s ", cft, content);
         System.out.println(out);
-
     }
 
     /**
@@ -114,8 +103,7 @@ public class Logger {
      *
      * @param args 待输出的字符串形参
      */
-    synchronized public static void info(Object... args)
-    {
+    synchronized public static void info(Object... args) {
         StringBuilder content = new StringBuilder();
         for (int i = 0; i < args.length; i++) {
             content.append(args[i]!=null?args[i].toString():"null");
@@ -126,7 +114,6 @@ public class Logger {
 
         String out = String.format("%20s |>  %s ", cft, content.toString());
         System.out.println(out);
-
     }
 
     /**
@@ -134,8 +121,7 @@ public class Logger {
      *
      * @param args 待输出的字符串形参
      */
-    synchronized public static void error(Object... args)
-    {
+    synchronized public static void error(Object... args) {
         StringBuilder content = new StringBuilder();
         for (int i = 0; i < args.length; i++) {
             content.append(args[i]!=null?args[i].toString():"null");
@@ -146,6 +132,5 @@ public class Logger {
 
         String out = String.format("%20s |>  %s ", cft, content.toString());
         System.err.println(out);
-
     }
 }
