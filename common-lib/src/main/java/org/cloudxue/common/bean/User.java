@@ -9,6 +9,7 @@ import java.io.Serializable;
  * @Date 2022/4/11 下午1:51
  * @Version 1.0
  **/
+
 public class User implements Serializable {
     public String uid;
     public String nickName;
@@ -25,5 +26,29 @@ public class User implements Serializable {
                 "uid='" + uid + '\'' +
                 ", nickName='" + nickName + '\'' +
                 '}';
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
