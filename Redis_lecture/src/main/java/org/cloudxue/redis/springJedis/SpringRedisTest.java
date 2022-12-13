@@ -34,4 +34,26 @@ public class SpringRedisTest {
         Logger.info("get user ", userInRedis);
 
     }
+
+    @Test
+    public void testServiceImplInTemplate() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring-redis.xml");
+        UserService service = (UserService)context.getBean("serviceImplInTemplate");
+
+        long userId = 2L;
+        service.deleteUser(userId);
+
+        User userInRedis = service.getUser(userId);
+        Logger.info("get User: " + userInRedis);
+
+        User user = new User("2", "foo");
+        service.saveUser(user);
+        Logger.info("save User ", user);
+
+        userInRedis = service.getUser(userId);
+        Logger.info("get User " , userInRedis);
+
+
+
+    }
 }
