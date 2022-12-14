@@ -28,7 +28,7 @@
         <java.version>1.8</java.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <springframework.version>5.2.9.RELEASE</springframework.version>
+        <springframework.version>5.3.15</springframework.version>
         <springboot.version>2.3.4.RELEASE</springboot.version>
 
         <guava.version>20.0</guava.version>
@@ -39,8 +39,11 @@
         <junit.version>4.13</junit.version>
         <lombok.version>1.16.10</lombok.version>
         <!-- 2.6.X以上的jedis，需要使用至少1.5.0以上的spring-data-redis -->
+        <jedis.version>2.6.2</jedis.version>
+        <!--
         <jedis.version>2.9.0</jedis.version>
-        <spring.data.redis.version>1.5.0.RELEASE</spring.data.redis.version>
+        -->
+        <spring.data.redis.version>1.4.3.RELEASE</spring.data.redis.version>
     </properties>
 
     <dependencies>
@@ -105,6 +108,22 @@
                     <groupId>org.slf4j</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${springframework.version}</version>
         </dependency>
     </dependencies>
 
@@ -205,6 +224,28 @@
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-redis</artifactId>
                 <version>${spring.data.redis.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-aop</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-tx</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-beans</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>

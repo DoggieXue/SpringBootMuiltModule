@@ -52,8 +52,36 @@ public class SpringRedisTest {
 
         userInRedis = service.getUser(userId);
         Logger.info("get User " , userInRedis);
+    }
 
+    @Test
+    public void testServiceImplByAnno() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("classpath:spring-redis.xml");
+        UserService service = (UserService) ac.getBean("userServiceImplByAnno");
 
+        long userId = 3L;
+        service.deleteUser(userId);
 
+        User userInRedis = service.getUser(userId);
+        Logger.info("get user: ", userInRedis);
+
+        User user = new User();
+        user.setUid(userId+"");
+        user.setNickName("foo");
+        service.saveUser(user);
+        Logger.info("save user: ", user);
+
+        userInRedis = service.getUser(userId);
+        Logger.info("get user: " , userInRedis);
+    }
+
+    /**
+     * 缓存注解，删除某个命名空间的缓存
+     */
+    @Test
+    public void testServiceDelAll() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("classpath:spring-redis.xml");
+        UserService service = (UserService) ac.getBean("userServiceImplByAnno");
+        service.deleteAll();
     }
 }

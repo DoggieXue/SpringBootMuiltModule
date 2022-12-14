@@ -15,6 +15,10 @@ public class User implements Serializable {
     public String nickName;
     public volatile int age;
 
+    public User() {
+
+    }
+
     public User(String uid, String nickName) {
         this.uid = uid;
         this.nickName = nickName;
