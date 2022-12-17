@@ -30,3 +30,6 @@
 /encrypt_lecture/target/
 
 /ZooKeeper_lecture/log/
+/Redis_lecture/Redis_lecture.iml
+/Redis_lecture/log/
+/Redis_lecture/target/
