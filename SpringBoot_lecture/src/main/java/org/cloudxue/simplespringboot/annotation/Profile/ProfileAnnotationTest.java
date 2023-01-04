@@ -1,4 +1,4 @@
-package org.cloudxue.simplespringboot.config;
+package org.cloudxue.simplespringboot.annotation.Profile;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
