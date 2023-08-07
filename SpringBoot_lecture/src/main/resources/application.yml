@@ -3,3 +3,10 @@ server:
 
 params:
   key: HelloWorld
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    client-id: client1
+    consumer:
+      group-id: consumerGroup1

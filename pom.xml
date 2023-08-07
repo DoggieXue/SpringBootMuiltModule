@@ -20,6 +20,7 @@
         <module>NettyWebSocketServer</module>
         <module>ZooKeeper_lecture</module>
         <module>Redis_lecture</module>
+        <module>SpringWeb_Lecture</module>
     </modules>
 
     <!-- 依赖版本集中管理-->
@@ -44,6 +45,7 @@
         <jedis.version>2.9.0</jedis.version>
         -->
         <spring.data.redis.version>1.4.3.RELEASE</spring.data.redis.version>
+        <kafka.version>2.6.2</kafka.version>
     </properties>
 
     <dependencies>
@@ -252,6 +254,12 @@
                 <groupId>com.mchange</groupId>
                 <artifactId>c3p0</artifactId>
                 <version>0.9.5.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${kafka.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
