@@ -20,7 +20,6 @@
         <module>NettyWebSocketServer</module>
         <module>ZooKeeper_lecture</module>
         <module>Redis_lecture</module>
-        <module>SpringWeb_Lecture</module>
     </modules>
 
     <!-- 依赖版本集中管理-->
