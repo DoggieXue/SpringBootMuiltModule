@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class KafkaConsumer {
 
-    @KafkaListener(topics = {KafkaConstants.TOPIC})
+//    @KafkaListener(topics = {KafkaConstants.TOPIC})
     public void consumeMsg(ConsumerRecord<?,?> record) {
         log.info("简单消费：topic：{},partition：{}, value：{}",record.topic(), record.partition(), record.value());
     }

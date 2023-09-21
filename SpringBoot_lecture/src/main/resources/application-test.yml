@@ -1,0 +1,21 @@
+server:
+  port: 8090
+
+params:
+  key: HelloWorld
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer: # 以下是kafka consumer配置
+      group-id: consumerGroup1
+      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: earliest # 如果找不到当前消费者的有效偏移量，则自动重置到最开始
+      enable-auto-commit: true # 消费者的偏移量自带提交
+      auto-commit-interval: 1000 # 消费者偏移量自动提交时间间隔
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      value-serializer: org.apache.kafka.common.serialization.StringDeserializer
+      batch-size: 16384 # 生产者每个批次最多含有多少条记录
+      buffer-memory: 67108864 # 生产者端可用的缓冲区 64M * 1024 * 1024

@@ -21,7 +21,7 @@ import java.beans.PropertyVetoException;
  **/
 
 @PropertySource("classpath:/datasource.properties")
-@Configuration
+//@Configuration
 public class ProfileConfigTest implements EmbeddedValueResolverAware {
 
     @Value("${dataSource.user}")
