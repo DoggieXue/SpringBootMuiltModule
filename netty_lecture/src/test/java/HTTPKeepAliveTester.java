@@ -1,6 +1,6 @@
-import org.cloudxue.common.util.HttpClientHelper;
-import org.cloudxue.common.util.JdkHttpURLConnectionHelper;
-import org.cloudxue.common.util.OkHttpUtil;
+import org.cloud.xue.common.util.HttpClientHelper;
+import org.cloud.xue.common.util.JdkHttpURLConnectionHelper;
+import org.cloud.xue.common.util.OkHttpUtil;
 import org.junit.Test;
 
 import java.util.HashMap;

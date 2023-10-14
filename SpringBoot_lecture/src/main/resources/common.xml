@@ -8,7 +8,7 @@
                            http://www.springframework.org/context/spring-context.xsd ">
 
     <context:property-placeholder location="classpath:config.properties"/>
-    <bean id = "propertySourceBean" class="org.cloudxue.simplespringboot.annotation.PropertySource.PropertySourceAnnotation">
+    <bean id = "propertySourceBean" class="org.cloud.xue.simplespringboot.annotation.PropertySource.PropertySourceAnnotation">
         <property name="appName" value="${test.app.common.appName}"></property>
         <property name="appVersion" value="${test.app.common.appVersion}"></property>
         <property name="appInfo" value="${test.app.common.appInfo}"></property>

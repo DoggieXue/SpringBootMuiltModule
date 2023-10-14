@@ -55,17 +55,17 @@
     </bean>
 
     <!-- 将redisTemplate封装成通用服务 -->
-    <bean id="springRedisService" class="org.cloudxue.redis.springJedis.CacheOperationService">
+    <bean id="springRedisService" class="org.cloud.xue.redis.springJedis.CacheOperationService">
         <property name="redisTemplate" ref="redisTemplate"/>
     </bean>
 
     <!-- 业务service，演示基于自定义缓存操作类，实现CRUD -->
-    <bean id="serviceImplByTemplate" class="org.cloudxue.redis.springJedis.UserServiceImplByTemplate" >
+    <bean id="serviceImplByTemplate" class="org.cloud.xue.redis.springJedis.UserServiceImplByTemplate" >
         <property name="cacheOperationService" ref="springRedisService"/>
     </bean>
 
     <!-- 业务service，演示基于RedisCallback实现CRUD -->
-    <bean id="serviceImplInTemplate" class="org.cloudxue.redis.springJedis.UserServiceImplInTemplate">
+    <bean id="serviceImplInTemplate" class="org.cloud.xue.redis.springJedis.UserServiceImplInTemplate">
         <property name="redisTemplate" ref="redisTemplate"/>
     </bean>
 
