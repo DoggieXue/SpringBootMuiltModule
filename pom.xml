@@ -23,6 +23,7 @@
         <module>ZooKeeper_lecture</module>
         <module>Redis_lecture</module>
         <module>springboot-kafka-demo</module>
+        <module>java_log_lecture</module>
     </modules>
 
     <parent>
