@@ -39,7 +39,7 @@
         <java.version>1.8</java.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <springframework.version>5.3.15</springframework.version>
+        <springframework.version>5.3.23</springframework.version>
         <springboot.version>2.7.5</springboot.version>
         <junit.version>4.13</junit.version>
         <lombok.version>1.16.10</lombok.version>
@@ -240,9 +240,15 @@
             </dependency>
 
             <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.30</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.mchange</groupId>
                 <artifactId>c3p0</artifactId>
-                <version>0.9.5.2</version>
+                <version>0.9.5.4</version>
             </dependency>
             <!-- JSON相关框架 -->
             <dependency>

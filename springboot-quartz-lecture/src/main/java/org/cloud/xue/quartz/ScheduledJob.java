@@ -6,10 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
-import java.util.Date;
-
 /**
- * @Description: 定义任务
+ * @Description: 具体定时任务
  * @Author: xuexiao
  * @Date: 2023年10月18日 16:32:40
  **/
@@ -18,6 +16,12 @@ public class ScheduledJob extends QuartzJobBean {
     @Override
     protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
         String jobDescription = context.getJobDetail().getDescription();
-        logger.info("开始执行Quartz job, job description: {}", jobDescription);
+        logger.info("开始执行定时任务: {}", jobDescription);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        logger.info("定时任务执行结束....");
     }
 }
