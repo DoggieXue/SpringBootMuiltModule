@@ -4,40 +4,42 @@ server:
 
 #spring:
 #  quartz:
-#  properties:
-#    org:
-#      quartz:
-#        scheduler:
-#          instanceName: ClusterQuartz_Demo
-#          instanceId: AUTO
-#          wrapJobExecutionInUserTransaction: false
-#        jobStore:
-#          isClustered: true
-#          class: org.quartz.impl.jdbcjobstore.JobStoreTX
-#          driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
-#          useProperties: true
-#          tablePrefix: QRTZ_
-#          dataSource: quartz_db
-#        threadPool:
-#          class: org.quartz.simpl.SimpleThreadPool
-#          threadCount: 10
-#          threadPriority: 5
-#          makeThreadsDaemons: true
-#          threadsInheritContextClassLoaderOfInitializingThread: true
-#        dataSource:
-#          quartz_db:
-#            driver: com.mysql.cj.jdbc.Driver
-#            URL: jdbc:mysql://127.0.0.1:3306/quartz_db?useUnicode=true&characterEncoding=UTF-8
-#            user: root
-#            password: 123456
-
-#  jdbc-store-type: jdbc
+#    scheduler-name: clusteredScheduler # 调度器名称，默认quartzScheduler
+#    job-store-type: jdbc # Job 存储器类型。默认为 memory 表示内存，可选 jdbc 使用数据库
+#    wait-for-jobs-to-complete-on-shutdown: true # 应用关闭时，是否等待定时任务执行完成。默认为 false ，建议设置为 true
+#    overwrite-existing-jobs: false # 是否覆盖已有 Job 的配置 默认false
+#    properties: # 添加 Quartz Scheduler 附加属性
+#      org:
+#        quartz:
+#          scheduler:
+#            instanceName: ClusterQuartz_Demo
+#            instanceId: AUTO
+#            wrapJobExecutionInUserTransaction: false
+#          jobStore:
+#            isClustered: true
+#            class: org.springframework.scheduling.quartz.LocalDataSourceJobStore
+##            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+#            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+#            useProperties: true
+#            tablePrefix: QRTZ_
+#            dataSource: quartz_db
+#          threadPool:
+#            class: org.quartz.simpl.SimpleThreadPool
+#            threadCount: 10
+#            threadPriority: 5
+#            makeThreadsDaemons: true
+#            threadsInheritContextClassLoaderOfInitializingThread: true
+#          dataSource:
+#            quartz_db:
+#              driver: com.mysql.cj.jdbc.Driver
+#              URL: jdbc:mysql://127.0.0.1:3306/quartz_db?useUnicode=true&characterEncoding=UTF-8
+#              user: root
+#              password: 123456
 spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/quartz_db?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.zaxxer.hikari.HikariDataSource
-    name: quartz_db
-
+    type: com.alibaba.druid.pool.DruidDataSource
+#    type: com.zaxxer.hikari.HikariDataSource # 默认，可不写

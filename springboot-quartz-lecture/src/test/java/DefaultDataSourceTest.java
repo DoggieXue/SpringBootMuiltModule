@@ -1,3 +1,4 @@
+import lombok.extern.slf4j.Slf4j;
 import org.cloud.xue.QuartzDemoApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,12 +15,13 @@ import javax.sql.DataSource;
  **/
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = QuartzDemoApplication.class)
+@Slf4j
 public class DefaultDataSourceTest {
     @Autowired
     DataSource dataSource;
 
     @Test
     public void contextLoad() {
-        System.out.println("******************" + dataSource.getClass());
+        log.info("获取数据源信息：{}", dataSource.getClass());
     }
 }

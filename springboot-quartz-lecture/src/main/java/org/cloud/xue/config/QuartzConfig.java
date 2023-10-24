@@ -67,24 +67,24 @@ public class QuartzConfig {
     @Bean(name = "scheduler")
     public Scheduler scheduler() throws IOException {
         Scheduler scheduler = schedulerFactoryBean().getScheduler();
-
-        JobDetail jobDetail = JobBuilder.newJob(HelloJob.class)
-                .withIdentity("HelloWorld",TRIGGER_DEFAULT_GROUP_NAME)
-                .build();
-        //构建Trigger
-        CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(CRON_OF_FIXED_TIME_EXECUTE_JOB);
-        CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity("HelloWorld",TRIGGER_DEFAULT_GROUP_NAME).withSchedule(scheduleBuilder).build();
-
-        try {
-            if (scheduler.checkExists(jobDetail.getKey()) && scheduler.checkExists(trigger.getKey())) {
-                logger.info("{}任务已经存在，无需初始化", jobDetail.getKey());
-            }else {
-                logger.info("装配定时任务：{}.{}",jobDetail.getKey(), trigger.getKey());
-                scheduler.scheduleJob(jobDetail, trigger);
-            }
-        } catch (SchedulerException e) {
-            e.printStackTrace();
-        }
+        //装载定时任务，在此处配置，则工程启动时会加载到库中
+//        JobDetail jobDetail = JobBuilder.newJob(HelloJob.class)
+//                .withIdentity("HelloWorld",TRIGGER_DEFAULT_GROUP_NAME)
+//                .build();
+//        //构建Trigger
+//        CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(CRON_OF_FIXED_TIME_EXECUTE_JOB);
+//        CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity("HelloWorld",TRIGGER_DEFAULT_GROUP_NAME).withSchedule(scheduleBuilder).build();
+//
+//        try {
+//            if (scheduler.checkExists(jobDetail.getKey()) && scheduler.checkExists(trigger.getKey())) {
+//                logger.info("{}任务已经存在，无需初始化", jobDetail.getKey());
+//            }else {
+//                logger.info("装配定时任务：{}.{}",jobDetail.getKey(), trigger.getKey());
+//                scheduler.scheduleJob(jobDetail, trigger);
+//            }
+//        } catch (SchedulerException e) {
+//            e.printStackTrace();
+//        }
         return scheduler;
     }
 
