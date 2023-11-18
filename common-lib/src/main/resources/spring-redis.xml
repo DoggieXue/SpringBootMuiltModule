@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/cache
+         http://www.springframework.org/schema/cache/spring-cache.xsd"
+       default-lazy-init="false">
+
+    <context:component-scan base-package="org.cloud.xue.common.cache.redis.springJedis"/>
+    <context:annotation-config/>
+
+    <!-- 加载配置文件 -->
+    <context:property-placeholder location="classpath:redis.properties" />
+    <!-- Redis数据源 -->
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis.maxTotal}"/>
+        <property name="maxIdle" value="${redis.maxTotal}"/>
+        <property name="maxWaitMillis" value="${redis.maxWaitMillis}"/>
+        <property name="blockWhenExhausted" value="${redis.blockWhenExhausted}"/>
+        <property name="testOnBorrow" value="${redis.testOnBorrow}"/>
+    </bean>
+
+    <!-- Spring-Redis连接池管理工厂 -->
+    <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="hostName" value="${redis.host}"/>
+        <property name="port" value="${redis.port}"/>
+        <!-- 连接池配置引用 -->
+        <property name="poolConfig" ref="poolConfig"/>
+        <!-- 是否使用连接池 -->
+        <property name="usePool" value="true"/>
+    </bean>
+
+    <!-- Redis template 定义 -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="jedisConnectionFactory"/>
+        <property name="keySerializer" >
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+        </property>
+        <property name="valueSerializer">
+            <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>
+        </property>
+        <property name="hashKeySerializer" >
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+        </property>
+        <property name="hashValueSerializer">
+            <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>
+        </property>
+        <!-- 开启事务 -->
+        <property name="enableTransactionSupport" value="true"/>
+    </bean>
+
+    <!-- 将redisTemplate封装成通用服务 -->
+    <bean id="springRedisService" class="org.cloud.xue.common.cache.redis.springJedis.CacheOperationService">
+        <property name="redisTemplate" ref="redisTemplate"/>
+    </bean>
+
+    <!-- 业务service，演示基于自定义缓存操作类，实现CRUD -->
+    <bean id="serviceImplByTemplate" class="org.cloud.xue.common.cache.redis.springJedis.UserServiceImplByTemplate" >
+        <property name="cacheOperationService" ref="springRedisService"/>
+    </bean>
+
+    <!-- 业务service，演示基于RedisCallback实现CRUD -->
+    <bean id="serviceImplInTemplate" class="org.cloud.xue.common.cache.redis.springJedis.UserServiceImplInTemplate">
+        <property name="redisTemplate" ref="redisTemplate"/>
+    </bean>
+
+    <!-- Spring 缓存注解的相关配置 -->
+    <!-- 1、开启缓存注解支持 -->
+    <cache:annotation-driven/>
+    <!--2、配置cache-manager属性，指定缓存管理器的Spring Bean 不同的缓存需要不同的CacheManager实现-->
+    <bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
+        <constructor-arg ref="redisTemplate"/>
+        <constructor-arg name="cacheNames">
+            <set>
+                <value>userCache</value>
+            </set>
+        </constructor-arg>
+    </bean>
+
+</beans>

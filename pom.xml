@@ -12,18 +12,11 @@
 
     <modules>
         <module>common-lib</module>
-        <module>encrypt_lecture</module>
-        <module>multi_thread_lecture</module>
-        <module>java_nio_lecture</module>
-        <module>design_patterns</module>
         <module>netty_lecture</module>
         <module>SpringBoot_lecture</module>
-        <module>NettyHttpServer</module>
-        <module>NettyWebSocketServer</module>
-        <module>ZooKeeper_lecture</module>
-        <module>Redis_lecture</module>
+        <module>springboot-netty-http-server-lecture</module>
+        <module>springboot-netty-ws-server-lecture</module>
         <module>springboot-kafka-demo</module>
-        <module>java_log_lecture</module>
         <module>springboot-quartz-lecture</module>
     </modules>
 
