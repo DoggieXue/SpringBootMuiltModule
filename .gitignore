@@ -8,7 +8,6 @@
 /SpringBoot_lecture/SpringBoot_lecture.iml
 /design_patterns/design_patterns.iml
 /multi_thread_lecture/multi_thread_lecture.iml
-/design_patterns/design_patterns.iml
 /NettyHttpServer/NettyHttpServer.iml
 /NettyWebSocketServer/NettyWebSocketServer.iml
 /ZooKeeper_lecture/ZooKeeper_lecture.iml
@@ -38,3 +37,4 @@
 /java_log_lecture/java_log_lecture.iml
 /java_log_lecture/target/
 /springboot-kafka-demo/springboot-kafka-demo.iml
+/springboot-quartz-lecture/target/
