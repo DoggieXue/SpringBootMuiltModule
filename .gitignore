@@ -1,18 +1,7 @@
-/SpringBootMuiltModule.iml
-/.idea/
-.idea/encodings.xml
-/netty_lecture/netty_lecture.iml
-/SpringBoot_lecture/SpringBoot_lecture.iml
-/SpringBoot_lecture/target
+# IntelliJ project files
+.idea
+*.iml
+.DS_Store
 
-/common-lib/common-lib.iml
-/common-lib/target/
-
-/About_SpringBoot_Multi_Module.iml
-/springboot-kafka-demo/target/
-/springboot-kafka-demo/springboot-kafka-demo.iml
-/springboot-quartz-lecture/target/
-
-/springboot-netty-http-server-lecture/target/
-/springboot-netty-ws-server-lecture/target/
-/netty_lecture/target/
+/.gitignore
+/*/target/
